@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Registro de Sala</title>
+    <link rel="stylesheet" th:href="@{/main.css}">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="container">
+
+<!-- ✅ MENSAJES DE ÉXITO Y ERROR -->
+<div th:if="${msgExito}" class="alert alert-success alert-dismissible fade show mt-3" role="alert">
+    <strong>✅ ¡Éxito!</strong> <span th:text="${msgExito}"></span>
+    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+</div>
+
+<div th:if="${msgError}" class="alert alert-danger alert-dismissible fade show mt-3" role="alert">
+    <strong>❌ ¡Error!</strong> <span th:text="${msgError}"></span>
+    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+</div>
+
+<div id="sala">
+    <h3>Salas</h3>
+    <table class="table table-hover text-center">
+        <thead>
+        <tr>
+            <th><img th:src="@{/images/pc.png}" class="img-fluid"><br><label><input id="pc1" type="checkbox"> Pc1</label></th>
+            <th><img th:src="@{/images/pc.png}" class="img-fluid"><br><label><input id="pc2" type="checkbox"> Pc2</label></th>
+            <th><img th:src="@{/images/pc.png}" class="img-fluid"><br><label><input id="pc3" type="checkbox"> Pc3</label></th>
+            <th><img th:src="@{/images/pc.png}" class="img-fluid"><br><label><input id="pc4" type="checkbox"> Pc4</label></th>
+            <th><img th:src="@{/images/pc.png}" class="img-fluid"><br><label><input id="pc5" type="checkbox"> Pc5</label></th>
+        </tr>
+        <tr>
+            <th><img th:src="@{/images/pc.png}" class="img-fluid"><br><label><input id="pc6" type="checkbox"> Pc6</label></th>
+            <th><img th:src="@{/images/pc.png}" class="img-fluid"><br><label><input id="pc7" type="checkbox"> Pc7</label></th>
+            <th><img th:src="@{/images/pc.png}" class="img-fluid"><br><label><input id="pc8" type="checkbox"> Pc8</label></th>
+            <th><img th:src="@{/images/pc.png}" class="img-fluid"><br><label><input id="pc9" type="checkbox"> Pc9</label></th>
+            <th><img th:src="@{/images/pc.png}" class="img-fluid"><br><label><input id="pc10" type="checkbox"> Pc10</label></th>
+        </tr>
+        </thead>
+    </table>
+</div>
+
+<div class="row justify-content-center">
+    <div class="col-md-6 col-lg-4">
+        <h3 th:text="${sala.id ne null ? 'Editar' : 'Nuevo'} + ' sala'"></h3>
+        <form th:action="@{/salas/nuevo}" method="post" th:object="${sala}">
+            <input type="hidden" th:if="*{id != null}" th:field="*{id}">
+
+            <div class="mb-3">
+                <label for="fecha">Fecha</label>
+                <input id="fecha" type="date" th:field="*{fecha}" class="form-control">
+            </div>
+
+            <div class="mb-3">
+                <label for="grado">Grado</label>
+                <input type="text" id="grado" th:field="*{grado}" class="form-control">
+            </div>
+
+            <div class="mb-3">
+                <label for="seccion">Sección</label>
+                <input type="text" id="seccion" th:field="*{seccion}" class="form-control">
+            </div>
+
+            <div class="mb-3">
+                <label for="asignatura">Asignatura</label>
+                <input type="text" id="asignatura" th:field="*{asignatura}" class="form-control">
+            </div>
+
+            <div class="mb-3">
+                <label for="novedad">Novedad</label>
+                <textarea id="novedad" th:field="*{novedad}" class="form-control" rows="3"></textarea>
+            </div>
+
+            <div class="text-end">
+                <button type="submit" class="btn btn-primary">Guardar</button>
+                <a th:href="@{/salas}" class="btn btn-light ms-2">Cancelar</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

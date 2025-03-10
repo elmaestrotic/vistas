@@ -1,0 +1,11 @@
+com\narvasoft\agenda\controller\UsuariosController.class
+com\narvasoft\agenda\repo\SalasRepository.class
+com\narvasoft\agenda\AgendaApplication.class
+com\narvasoft\agenda\controller\DiariosController.class
+com\narvasoft\agenda\config\StaticResourceConfig.class
+com\narvasoft\agenda\repo\UsuariosRepository.class
+com\narvasoft\agenda\repo\DiariosRepository.class
+com\narvasoft\agenda\model\Salas.class
+com\narvasoft\agenda\model\Usuarios.class
+com\narvasoft\agenda\model\Diarios.class
+com\narvasoft\agenda\controller\SalasController.class

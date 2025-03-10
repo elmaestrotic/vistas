@@ -1,0 +1,24 @@
+body {
+    font-family: 'Roboto', sans-serif;
+}
+
+.container {
+    width: 100%;
+    margin: 0 auto;
+}
+
+#sala {
+    float: right;
+    width: 50%;
+    justify-content: center;
+}
+
+#sala table {
+    text-align: right;
+}
+
+#sala th {
+    padding: 10px;
+    display: inline-block;
+    width: 18%;
+}

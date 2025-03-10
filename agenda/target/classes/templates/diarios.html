@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Home</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+
+</head>
+
+<body>
+<div class="container">
+    <div class="row justify-content-center">
+        <div th:if="${msgExito ne null}" class="alert-sucess alert-dismissible"></div>
+        [[${msgExito}]]
+        <button type="button" class="btn btn-close" data-bs-dismiss="alert"></button>
+    </div>
+
+    <h3>Diarios de Campo</h3>
+
+    <div class="text-center my-3">
+        <a href="/diarios/nuevo" class="btn btn-primary">Nuevo Registro de Clase</a></div>
+    <table class="table table-hover">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Fecha</th>
+            <th>Grado</th>
+            <th>Sección</th>
+            <th>Asignatura</th>
+            <th>Descripción</th>
+            <th>Reflexión</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="diario : ${diarios}">
+            <td th:text="${diario.id}"></td>
+            <td th:text="${diario.fecha}"></td>
+            <td th:text="${diario.grado}"></td>
+            <td th:text="${diario.seccion}"></td>
+            <td th:text="${diario.asignatura}"></td>
+            <td th:text="${diario.descripcion}"></td>
+            <td th:text="${diario.reflexion}"></td>
+            <td class="text-end">
+                <a th:href="@{/diarios/{id}/editar(id=${diario.id})}" class="btn btn-sm btn-primary">
+                    Editar
+                </a>
+                <a href="#" onclick="eliminarRegistro(this)" class="btn btn-danger btn-sm">
+                    Eliminar
+                </a>
+                <form th:action="@{/diarios/{id}/eliminar(id=${diario.id})}" method="post"></form>
+            </td>
+        </tr>
+
+        </tbody>
+    </table>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+    function eliminarRegistro(elemen) {
+        var ok = confirm("¿Está seguro de eliminar el registro de la clase?");
+        if (ok) {
+            elemen.nextElementSibling.submit();
+        }
+    }
+</script>
+
+</body>
+</html>
